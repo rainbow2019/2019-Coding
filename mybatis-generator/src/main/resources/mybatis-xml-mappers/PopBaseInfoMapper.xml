@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zhaohong.dao_interface.PopBaseInfoMapper">
+  <resultMap id="BaseResultMap" type="com.zhaohong.dao_bean.PopBaseInfo">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="merchant_no" jdbcType="VARCHAR" property="merchantNo" />
+    <result column="problem_type" jdbcType="INTEGER" property="problemType" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="creater_department" jdbcType="VARCHAR" property="createrDepartment" />
+    <result column="create_way" jdbcType="INTEGER" property="createWay" />
+    <result column="create_reason" jdbcType="VARCHAR" property="createReason" />
+    <result column="trigger_rule" jdbcType="VARCHAR" property="triggerRule" />
+    <result column="handler" jdbcType="VARCHAR" property="handler" />
+    <result column="handler_department" jdbcType="VARCHAR" property="handlerDepartment" />
+    <result column="handle_status" jdbcType="INTEGER" property="handleStatus" />
+    <result column="handle_reason" jdbcType="VARCHAR" property="handleReason" />
+    <result column="handle_time" jdbcType="TIMESTAMP" property="handleTime" />
+    <result column="handle_result" jdbcType="INTEGER" property="handleResult" />
+    <result column="order_nos" jdbcType="VARCHAR" property="orderNos" />
+    <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
+    <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, merchant_no, problem_type, creater, creater_department, create_way, create_reason, 
+    trigger_rule, handler, handler_department, handle_status, handle_reason, handle_time, 
+    handle_result, order_nos, created_time, modified_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 'id' as QUERYID,
+    <include refid="Base_Column_List" />
+    from scaleph_pop_base_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from scaleph_pop_base_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.zhaohong.dao_bean.PopBaseInfo">
+    insert into scaleph_pop_base_info (id, merchant_no, problem_type, 
+      creater, creater_department, create_way, 
+      create_reason, trigger_rule, handler, 
+      handler_department, handle_status, handle_reason, 
+      handle_time, handle_result, order_nos, 
+      created_time, modified_time)
+    values (#{id,jdbcType=BIGINT}, #{merchantNo,jdbcType=VARCHAR}, #{problemType,jdbcType=INTEGER}, 
+      #{creater,jdbcType=VARCHAR}, #{createrDepartment,jdbcType=VARCHAR}, #{createWay,jdbcType=INTEGER}, 
+      #{createReason,jdbcType=VARCHAR}, #{triggerRule,jdbcType=VARCHAR}, #{handler,jdbcType=VARCHAR}, 
+      #{handlerDepartment,jdbcType=VARCHAR}, #{handleStatus,jdbcType=INTEGER}, #{handleReason,jdbcType=VARCHAR}, 
+      #{handleTime,jdbcType=TIMESTAMP}, #{handleResult,jdbcType=INTEGER}, #{orderNos,jdbcType=VARCHAR}, 
+      #{createdTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zhaohong.dao_bean.PopBaseInfo">
+    insert into scaleph_pop_base_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="merchantNo != null">
+        merchant_no,
+      </if>
+      <if test="problemType != null">
+        problem_type,
+      </if>
+      <if test="creater != null">
+        creater,
+      </if>
+      <if test="createrDepartment != null">
+        creater_department,
+      </if>
+      <if test="createWay != null">
+        create_way,
+      </if>
+      <if test="createReason != null">
+        create_reason,
+      </if>
+      <if test="triggerRule != null">
+        trigger_rule,
+      </if>
+      <if test="handler != null">
+        handler,
+      </if>
+      <if test="handlerDepartment != null">
+        handler_department,
+      </if>
+      <if test="handleStatus != null">
+        handle_status,
+      </if>
+      <if test="handleReason != null">
+        handle_reason,
+      </if>
+      <if test="handleTime != null">
+        handle_time,
+      </if>
+      <if test="handleResult != null">
+        handle_result,
+      </if>
+      <if test="orderNos != null">
+        order_nos,
+      </if>
+      <if test="createdTime != null">
+        created_time,
+      </if>
+      <if test="modifiedTime != null">
+        modified_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="merchantNo != null">
+        #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="problemType != null">
+        #{problemType,jdbcType=INTEGER},
+      </if>
+      <if test="creater != null">
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createrDepartment != null">
+        #{createrDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="createWay != null">
+        #{createWay,jdbcType=INTEGER},
+      </if>
+      <if test="createReason != null">
+        #{createReason,jdbcType=VARCHAR},
+      </if>
+      <if test="triggerRule != null">
+        #{triggerRule,jdbcType=VARCHAR},
+      </if>
+      <if test="handler != null">
+        #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerDepartment != null">
+        #{handlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="handleStatus != null">
+        #{handleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="handleReason != null">
+        #{handleReason,jdbcType=VARCHAR},
+      </if>
+      <if test="handleTime != null">
+        #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleResult != null">
+        #{handleResult,jdbcType=INTEGER},
+      </if>
+      <if test="orderNos != null">
+        #{orderNos,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zhaohong.dao_bean.PopBaseInfo">
+    update scaleph_pop_base_info
+    <set>
+      <if test="merchantNo != null">
+        merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="problemType != null">
+        problem_type = #{problemType,jdbcType=INTEGER},
+      </if>
+      <if test="creater != null">
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="createrDepartment != null">
+        creater_department = #{createrDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="createWay != null">
+        create_way = #{createWay,jdbcType=INTEGER},
+      </if>
+      <if test="createReason != null">
+        create_reason = #{createReason,jdbcType=VARCHAR},
+      </if>
+      <if test="triggerRule != null">
+        trigger_rule = #{triggerRule,jdbcType=VARCHAR},
+      </if>
+      <if test="handler != null">
+        handler = #{handler,jdbcType=VARCHAR},
+      </if>
+      <if test="handlerDepartment != null">
+        handler_department = #{handlerDepartment,jdbcType=VARCHAR},
+      </if>
+      <if test="handleStatus != null">
+        handle_status = #{handleStatus,jdbcType=INTEGER},
+      </if>
+      <if test="handleReason != null">
+        handle_reason = #{handleReason,jdbcType=VARCHAR},
+      </if>
+      <if test="handleTime != null">
+        handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="handleResult != null">
+        handle_result = #{handleResult,jdbcType=INTEGER},
+      </if>
+      <if test="orderNos != null">
+        order_nos = #{orderNos,jdbcType=VARCHAR},
+      </if>
+      <if test="createdTime != null">
+        created_time = #{createdTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modifiedTime != null">
+        modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zhaohong.dao_bean.PopBaseInfo">
+    update scaleph_pop_base_info
+    set merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      problem_type = #{problemType,jdbcType=INTEGER},
+      creater = #{creater,jdbcType=VARCHAR},
+      creater_department = #{createrDepartment,jdbcType=VARCHAR},
+      create_way = #{createWay,jdbcType=INTEGER},
+      create_reason = #{createReason,jdbcType=VARCHAR},
+      trigger_rule = #{triggerRule,jdbcType=VARCHAR},
+      handler = #{handler,jdbcType=VARCHAR},
+      handler_department = #{handlerDepartment,jdbcType=VARCHAR},
+      handle_status = #{handleStatus,jdbcType=INTEGER},
+      handle_reason = #{handleReason,jdbcType=VARCHAR},
+      handle_time = #{handleTime,jdbcType=TIMESTAMP},
+      handle_result = #{handleResult,jdbcType=INTEGER},
+      order_nos = #{orderNos,jdbcType=VARCHAR},
+      created_time = #{createdTime,jdbcType=TIMESTAMP},
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
