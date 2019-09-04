@@ -19,11 +19,12 @@
     <result column="order_nos" jdbcType="VARCHAR" property="orderNos" />
     <result column="created_time" jdbcType="TIMESTAMP" property="createdTime" />
     <result column="modified_time" jdbcType="TIMESTAMP" property="modifiedTime" />
+    <result column="hit_num" jdbcType="INTEGER" property="hitNum" />
   </resultMap>
   <sql id="Base_Column_List">
     id, merchant_no, problem_type, creater, creater_department, create_way, create_reason, 
     trigger_rule, handler, handler_department, handle_status, handle_reason, handle_time, 
-    handle_result, order_nos, created_time, modified_time
+    handle_result, order_nos, created_time, modified_time, hit_num
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 'id' as QUERYID,
@@ -41,13 +42,15 @@
       create_reason, trigger_rule, handler, 
       handler_department, handle_status, handle_reason, 
       handle_time, handle_result, order_nos, 
-      created_time, modified_time)
+      created_time, modified_time, hit_num
+      )
     values (#{id,jdbcType=BIGINT}, #{merchantNo,jdbcType=VARCHAR}, #{problemType,jdbcType=INTEGER}, 
       #{creater,jdbcType=VARCHAR}, #{createrDepartment,jdbcType=VARCHAR}, #{createWay,jdbcType=INTEGER}, 
       #{createReason,jdbcType=VARCHAR}, #{triggerRule,jdbcType=VARCHAR}, #{handler,jdbcType=VARCHAR}, 
       #{handlerDepartment,jdbcType=VARCHAR}, #{handleStatus,jdbcType=INTEGER}, #{handleReason,jdbcType=VARCHAR}, 
       #{handleTime,jdbcType=TIMESTAMP}, #{handleResult,jdbcType=INTEGER}, #{orderNos,jdbcType=VARCHAR}, 
-      #{createdTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP})
+      #{createdTime,jdbcType=TIMESTAMP}, #{modifiedTime,jdbcType=TIMESTAMP}, #{hitNum,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.zhaohong.dao_bean.PopBaseInfo">
     insert into scaleph_pop_base_info
@@ -103,6 +106,9 @@
       <if test="modifiedTime != null">
         modified_time,
       </if>
+      <if test="hitNum != null">
+        hit_num,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -155,6 +161,9 @@
       </if>
       <if test="modifiedTime != null">
         #{modifiedTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="hitNum != null">
+        #{hitNum,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -209,6 +218,9 @@
       <if test="modifiedTime != null">
         modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="hitNum != null">
+        hit_num = #{hitNum,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
@@ -229,7 +241,8 @@
       handle_result = #{handleResult,jdbcType=INTEGER},
       order_nos = #{orderNos,jdbcType=VARCHAR},
       created_time = #{createdTime,jdbcType=TIMESTAMP},
-      modified_time = #{modifiedTime,jdbcType=TIMESTAMP}
+      modified_time = #{modifiedTime,jdbcType=TIMESTAMP},
+      hit_num = #{hitNum,jdbcType=INTEGER}
     where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

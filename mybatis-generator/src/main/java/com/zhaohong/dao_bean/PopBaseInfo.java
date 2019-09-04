@@ -37,6 +37,8 @@ public class PopBaseInfo {
 
     private Date modifiedTime;
 
+    private Integer hitNum;
+
     public Long getId() {
         return id;
     }
@@ -171,5 +173,13 @@ public class PopBaseInfo {
 
     public void setModifiedTime(Date modifiedTime) {
         this.modifiedTime = modifiedTime;
+    }
+
+    public Integer getHitNum() {
+        return hitNum;
+    }
+
+    public void setHitNum(Integer hitNum) {
+        this.hitNum = hitNum;
     }
 }
