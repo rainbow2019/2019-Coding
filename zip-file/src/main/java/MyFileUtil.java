@@ -66,7 +66,7 @@ public class MyFileUtil {
             try {
                 is.close();
             } catch (IOException e) {
-                //logger.info("读取IO流关闭失败");
+                System.out.println("读取IO流关闭失败");
             }
         }
     }
@@ -79,7 +79,7 @@ public class MyFileUtil {
             try {
                 os.close();
             } catch (IOException e) {
-//            logger.info("写入IO流关闭失败");
+                System.out.println("写入IO流关闭失败");
             }
         }
     }

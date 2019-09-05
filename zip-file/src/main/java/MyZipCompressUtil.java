@@ -7,7 +7,7 @@ import java.io.*;
 /**
  * 压缩文件
  */
-public class MyZipUtil {
+public class MyZipCompressUtil {
     private static Integer BUFFER_SIZE = 1024 * 1024;
 
     /**
@@ -41,18 +41,20 @@ public class MyZipUtil {
 
     }
 
-
     /**
      * 处理目录
      */
     public static void compress(ZipOutputStream zos, File src, String baseDir) {
         try {
-            if (src.isDirectory()) {
+            if (src.isDirectory()) {//目录
                 File[] files = src.listFiles();
+                //当前目录路径
                 baseDir = baseDir + "/" + src.getName() + "/";//必须以"/"结尾否则是文件
-                zos.putNextEntry(new ZipEntry(baseDir));//添加目录(无论是否是空目录)
+                //创建该目录(无论是否是空目录)
+                zos.putNextEntry(new ZipEntry(baseDir));
+                //递归遍历
                 for (File file : files) {
-                    compress(zos, file, baseDir);//递归调用
+                    compress(zos, file, baseDir);
                 }
             } else {
                 doCompressFile(zos, src, baseDir + "/");//压缩某个文件
@@ -75,8 +77,7 @@ public class MyZipUtil {
         int len;
         try {
             bis = new BufferedInputStream(new FileInputStream(file));
-            //必须putNextEntry
-            zos.putNextEntry(new ZipEntry(baseDir + file.getName()));
+            zos.putNextEntry(new ZipEntry(baseDir + file.getName()));//必须putNextEntry
             while ((len = bis.read(buffer)) != -1) {
                 zos.write(buffer, 0, len);
             }
