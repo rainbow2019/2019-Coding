@@ -1,0 +1,4 @@
+com\zhaohong\dao_bean\RobinDictType.class
+com\zhaohong\dao_interface\RobinDictMapper.class
+com\zhaohong\dao_interface\RobinDictTypeMapper.class
+com\zhaohong\dao_bean\RobinDict.class
