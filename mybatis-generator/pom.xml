@@ -12,7 +12,7 @@
     <properties>
         <dao.target.dir>src/main/java</dao.target.dir>
         <springboot.version>2.1.0</springboot.version>
-        <mysql.connector.java>5.1.42</mysql.connector.java>
+        <mysql.connector.java>8.0.28</mysql.connector.java>
         <!--        <mysql.connector.java>8.0.12</mysql.connector.java>-->
         <mybatis.generator.maven.plugin>1.3.7</mybatis.generator.maven.plugin>
         <mybatis-spring-boot-starter.verson>2.1.0</mybatis-spring-boot-starter.verson>
